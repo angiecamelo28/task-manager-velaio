@@ -1,10 +1,4 @@
-import { AfterViewInit, Component, HostListener, OnInit, ChangeDetectorRef  } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { SettingsService } from 'src/app/core/services/settings.service';
-/* import { AdministrationService } from 'src/app/core/administration/services/administration.service'; */
-import Swal from 'sweetalert2';
+import { AfterViewInit, Component, HostListener } from '@angular/core';
 
 declare var $: any;
 @Component({
@@ -12,31 +6,8 @@ declare var $: any;
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit, AfterViewInit {
-  public role: string | null | undefined;
-  public loading: boolean = false;
-  public username: String | null | undefined;
-  public location: String | null | undefined;
-  public document: String | null | undefined;
-  public viewPQR: boolean = false;
+export class HeaderComponent implements AfterViewInit {
 
-  constructor(
-    private router: Router,
-    private routeActive: ActivatedRoute,
-    private cdr: ChangeDetectorRef
-  ) {
-
-  }
-
-  ngOnInit(): void {
-    this.reload();
-
-  }
-
-  private reload(): void {
-  }
-
- 
   ngAfterViewInit(): void {
     setTimeout(() => {
       $(window).ready(function () {
@@ -50,9 +21,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
     function SmoothlyMenu() {
       if (!$('body').hasClass('mini-navbar') || $('body').hasClass('body-small')) {
-        // Hide menu in order to smoothly turn on when maximize menu
         $('#side-menu').hide();
-        // For smoothly turn on menu
         setTimeout(
           function () {
             $('#side-menu').show(400);
@@ -64,7 +33,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
             $('#side-menu').show(400);
           }, 100);
       } else {
-        // Remove all inline style from jquery fadeIn function to reset menu state
         $('#side-menu').removeAttr('style');
       }
     }
@@ -75,18 +43,14 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   toggleMobileNavbar(event: Event) {
     const target = event.target as HTMLElement;
     const navbar = document.querySelector('#navbar');
-
-    // Toggle mobile navbar
     if (target && target.classList.contains('mobile-nav-toggle')) {
       if (navbar) {
         navbar.classList.toggle('navbar-mobile');
       }
       target.classList.toggle('bi-list');
       target.classList.toggle('bi-x');
-      return; // Salir del método si se detecta un clic en el icono de mobile-nav-toggle
+      return;
     }
-
-    // Toggle dropdown
     if (target && navbar && target.closest('.navbar .dropdown > a')) {
 
       const dropdownLink = target.closest('.navbar .dropdown > a');

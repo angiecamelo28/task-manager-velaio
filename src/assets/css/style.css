@@ -2012,15 +2012,15 @@ button:focus {
 
 .btn-primary {
   color: #fff !important;
-  background-color: #42bbff !important;
-  border-color: #42bbff !important;
+  background-color: #1967d2 !important;
+  border-color: #1967d2 !important;
 }
 
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary.focus {
-  background-color: #3c5157 !important;
-  border-color: #3c5157 !important;
+  background-color: #144a9e !important;
+  border-color: #144a9e !important;
   color: #FFFFFF !important;
 }
 
@@ -2799,8 +2799,8 @@ button.dim:active:before {
 }
 
 .pagination .footable-page.active a {
-  background-color: #21AF9B;
-  border-color: #21AF9B;
+  background-color: #1967d2;
+  border-color: #1967d2;
   color: white;
 }
 

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Pagina404Component } from './pagina404/pagina404.component';
-import { TaskManagerComponent } from './core/pages/task-manager/task-manager.component';
+import { TaskManagerComponent } from './core/pages/tasks/task-manager/task-manager.component';
 import { UsersComponent } from './core/pages/users/users.component';
 
 const routes: Routes = [
@@ -19,10 +19,10 @@ const routes: Routes = [
     path: 'users',
     component: UsersComponent,
   },
-  { 
-    path: '**', 
+  {
+    path: '**',
     component: Pagina404Component
-   },
+  },
 ];
 
 

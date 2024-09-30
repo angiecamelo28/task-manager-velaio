@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Task } from '../core/models/model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class TaskService {
    * Método para crear una nueva tarea (en caso de que la API lo permita)
    * @param task Información de la tarea a crear
    */
-  createTask(task: any): Observable<any> {
+  createTask(task: Task): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}`, task);
   }
 
@@ -32,7 +33,7 @@ export class TaskService {
    * @param id 
    * @param task 
    */
-  updateTask(id: number, task: any): Observable<any> {
+  updateTask(id: number, task: Task): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${id}`, task);
   }
 }
