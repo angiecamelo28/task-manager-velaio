@@ -1,0 +1,34 @@
+#hero {
+  width: 100%;
+  background: #f3f5fa;
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 13px;
+  padding-top: 90px;
+  min-height: calc(100vh - 100px); 
+  box-sizing: border-box;
+}
+
+#hero .container {
+  padding-top: 0; 
+  margin-top: 20px; 
+}
+
+section {
+  padding: 0; 
+  overflow: hidden;
+  min-height: calc(100vh - 100px); 
+}
+
+.section-bg {
+  background-color: #f3f5fa;
+}
+
+.section-white {
+  background-color: white;
+}
+
+
+
+.section-title p {
+  margin-bottom: 0;
+}

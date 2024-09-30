@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+.TextInit {
+  opacity: 0;
+}
+
+body {
+  background-color: #f8f9fa !important;
+  padding-right: 0px !important;
+}
+
+.multiselect-dropdown .dropdown-btn .selected-item-container .selected-item {
+  max-width: 300px !important;
+}
+
+::ng-deep.swal2-container {
+  z-index: 1000000;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .TextInit {
+    display: none;
+  }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Task Manager</title>
+  <base href="./">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="./assets/img/logos/logo.png">
+  <!--Custom lnks css-->
+  <!-- <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+   -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- <link href="./assets/font-awesome/css/font-awesome.css" rel="stylesheet"> -->
+  <link href="./assets/css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+  <link href="./assets/css/plugins/colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet">
+  <link href="./assets/css/plugins/cropper/cropper.min.css" rel="stylesheet">
+  <link href="./assets/css/plugins/switchery/switchery.css" rel="stylesheet">
+  <link href="./assets/css/plugins/nouslider/jquery.nouislider.css" rel="stylesheet">
+  <link href="./assets/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+  <link href="./assets/css/plugins/ionRangeSlider/ion.rangeSlider.css" rel="stylesheet">
+  <link href="./assets/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+  <link href="./assets/css/plugins/clockpicker/clockpicker.css" rel="stylesheet">
+  <link href="./assets/css/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet">
+  <link href="./assets/css/plugins/select2/select2.min.css" rel="stylesheet">
+  <link href="./assets/css/plugins/select2/select2-bootstrap4.min.css" rel="stylesheet">
+  <link href="./assets/css/plugins/touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
+  <link href="./assets/css/plugins/dualListbox/bootstrap-duallistbox.min.css" rel="stylesheet">
+  <link href="./assets/css/plugins/jsTree/style.min.css" rel="stylesheet">
+  <link href="./assets/css/plugins/slick/slick.css" rel="stylesheet">
+  <link href="./assets/css/plugins/slick/slick-theme.css" rel="stylesheet">
+
+  <link href="./assets/css/animate.css" rel="stylesheet">
+  <link href="./assets/css/style.css" rel="stylesheet">
+  <link href="./assets/css/select2-custom-theme.css" rel="stylesheet">
+
+
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap">
+  <script type="text/javascript" src="https://checkout.epayco.co/checkout.js"></script>
+
+</head>
+
+<body>
+  <app-root></app-root>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <!-- Mainly scripts -->
+  <script src="./assets/js/jquery-3.1.1.min.js"></script>
+  <script src="./assets/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+  <script src="./assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+  <!-- Flot -->
+  <script src="./assets/js/plugins/flot/jquery.flot.js"></script>
+  <script src="./assets/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+  <script src="./assets/js/plugins/flot/jquery.flot.spline.js"></script>
+  <script src="./assets/js/plugins/flot/jquery.flot.resize.js"></script>
+  <script src="./assets/js/plugins/flot/jquery.flot.pie.js"></script>
+  <script src="./assets/js/plugins/switchery/switchery.js"></script>
+
+  <!-- Input Mask-->
+
+  <script src="./assets/js/plugins/jqueryMask/jquery.mask.min.js"></script>
+  <!-- Data picker -->
+  <script src="./assets/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+  <!-- NouSlider -->
+  <script src="./assets/js/plugins/nouslider/jquery.nouislider.min.js"></script>
+  <script src="./assets/js/plugins/switchery/switchery.js"></script>
+  <script src="./assets/js/plugins/ionRangeSlider/ion.rangeSlider.min.js"></script>
+  <script src="./assets/js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+  <script src="./assets/js/plugins/clockpicker/clockpicker.js"></script>
+  <script src="./assets/js/plugins/cropper/cropper.min.js"></script>
+  <script src="./assets/js/plugins/fullcalendar/moment.min.js"></script>
+  <script src="./assets/js/plugins/fullcalendar/fullcalendar.min.js"></script>
+  <script src="./assets/js/plugins/daterangepicker/daterangepicker.js"></script>
+  <script src="./assets/js/plugins/select2/select2.full.min.js"></script>
+  <script src="./assets/js/plugins/touchspin/jquery.bootstrap-touchspin.min.js"></script>
+  <script src="./assets/js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+  <script src="./assets/js/plugins/dualListbox/jquery.bootstrap-duallistbox.js"></script>
+
+  <!-- Peity -->
+  <script src="./assets/js/plugins/peity/jquery.peity.min.js"></script>
+  <script src="./assets/js/demo/peity-demo.js"></script>
+
+  <!-- Custom and plugin javascript -->
+  <script src="./assets/js/inspinia.js"></script>
+  <script src="./assets/js/plugins/pace/pace.min.js"></script>
+
+  <!-- jQuery UI -->
+  <script src="./assets/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+  <!-- GITTER -->
+  <script src="./assets/js/plugins/gritter/jquery.gritter.min.js"></script>
+
+  <!-- Sparkline -->
+  <script src="./assets/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+  <!-- Sparkline demo data  -->
+  <script src="./assets/js/demo/sparkline-demo.js"></script>
+
+  <!-- Toastr -->
+  <script src="./assets/js/plugins/toastr/toastr.min.js"></script>
+  <!-- iCheck -->
+  <script src="./assets/js/plugins/iCheck/icheck.min.js"></script>
+  <!-- DataTables -->
+  <script src="./assets/js/plugins/dataTables/datatables.min.js"></script>
+  <!-- FooTable -->
+  <script src="./assets/js/plugins/footable/footable.all.min.js"></script>
+
+  <!-- Dual Listbox -->
+  <script src="./assets/js/plugins/dualListbox/jquery.bootstrap-duallistbox.js"></script>
+  <script src="./assets/js/plugins/jsTree/jstree.min.js"></script>
+  <script src="./assets/js/plugins/slick/slick.min.js"></script>
+
+
+  <!-- Wizard -->
+
+  <script src="./assets/js/jquery.backstretch.min.js"></script>
+  <script src="./assets/js/retina-1.1.0.min.js"></script>
+
+
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    $(document).ready(function () {
+
+      $("#myInput2").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#myInput2").val(value);
+        $("#myTable2 tr").filter(function () {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+
+      $("#myInput3").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#myInput3").val(value);
+        $("#myTable3 tr").filter(function () {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+      // Tooltips demo
+      $('.tooltip-demo').tooltip({
+        selector: "[data-toggle=tooltip]",
+        container: "body"
+      });
+
+      $(function () {
+
+        $('#toggleSpinners').on('click', function () {
+          $('#ibox').children('.ibox-content').toggleClass('sk-loading');
+        })
+
+      })
+    });
+
+
+
+
+  </script>
+</body>
+
+</html>

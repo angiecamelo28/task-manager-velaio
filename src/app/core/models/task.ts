@@ -1,0 +1,15 @@
+export interface updateAffiliation {
+  typeDocument: string,
+  numDocument: number,
+  name: string,
+  plan: string,
+  civilStatus: string,
+  codePlan: string,
+  occupation: string,
+  stratification: number,
+  email: string,
+  phone: number,
+  department: string,
+  city: string,
+  address: string,
+}

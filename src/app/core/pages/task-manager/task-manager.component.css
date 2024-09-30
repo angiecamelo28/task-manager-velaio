@@ -1,0 +1,380 @@
+
+.icon-box {
+    padding: 30px;
+    position: relative !important;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 0 29px 0 rgba(68, 88, 144, 0.12);
+    transition: all 0.3s ease-in-out, padding-bottom 0.3s ease; 
+    border-radius: 8px;
+    z-index: 1;
+    height: auto;
+  }
+
+  .icon-box::before {
+    content: "";
+    position: absolute;
+    background: rgba(32, 31, 59, 0.8);
+    right: -60px;
+    top: -40px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    transition: all 0.3s;
+    z-index: -1;
+  }
+
+  .icon-box:hover {
+    padding-bottom: 60px; 
+}
+
+.icon-box .actions {
+    position: absolute;
+    bottom: -100px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, bottom 0.3s ease;
+    margin-top: 10px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-around !important;
+    width: 80% !important;
+  }
+  
+  .icon-box:hover .actions {
+    opacity: 1;
+    visibility: visible;
+    bottom: 20px;
+  }
+  
+  .icon-box:hover::before {
+    background: #201f3b;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+  }
+  
+  .icon {
+    margin: 0 auto 20px auto;
+    padding-top: 13px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background: #201f3b;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .icon i {
+    font-size: 32px;
+    line-height: 1;
+    color: #fff;
+  }
+  
+  .title {
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+  
+  .title a {
+    color: #425451;
+    text-decoration: none; 
+    color: inherit; 
+
+  }
+
+  
+  .description {
+    font-size: 13px;
+    line-height: 28px;
+    margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .icon-box:hover .title a,
+  .icon-box:hover .doc p,
+  .icon-box:hover .description {
+    color: #fff;
+  }
+  
+  .icon-box:hover .icon {
+    background: #fff;
+  }
+  
+  .icon-box:hover .icon i {
+    color: #201f3b;
+  }
+  
+ 
+  
+  .actions a {
+    color: white;
+    transition: color 0.3s, border-color 0.3s;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+  }
+  
+  .actions a:hover {
+    color: #201f3b;
+    background-color: white;
+    border-color: white;
+  }
+
+  
+  .actions i {
+    font-size: 13px;
+    margin: 0 2px;
+  }
+
+  .btn-circle {
+    width: 28px;
+    height: 28px;
+    padding: 2px 0;
+    border-radius: 50% !important;
+    text-align: center;
+    line-height: 1.428571429;
+  }
+
+  
+.options {
+    max-width: 100%;
+    background-color: transparent !important;
+    height: 40px;
+
+    .option {
+        position: relative;
+        display: flex;
+        text-decoration: none;
+    }
+
+    .option:hover::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: white;
+        color: #201f3b;
+        padding: 5px;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        white-space: nowrap;
+    }
+
+    .option:hover::before {
+        content: "";
+        position: absolute;
+        border-bottom: 100%;
+        border-left: 50%;
+        height: 50px;
+        transform: translateX(-50%);
+        border-width: 5px;
+        border-style: solid;
+        border-color: #201f3b transparent transparent transparent;
+    }
+}
+
+@media (min-width: 924px) and (max-width: 1399px) {
+  .description {
+    max-width: 180px;
+  }
+}
+
+
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #201f3b;
+}
+
+.form-group2 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+
+.search {
+  border-radius: 8px;
+  width: 20%;
+  padding: 0;
+  color: #ffff;
+  background-color: #ffff;
+  border: none;
+  flex-grow: 1;
+  margin-right: 1em;
+}
+
+
+.search-btn {
+  border-radius: 8px;
+  width: 10%;
+  font-size: 1em;
+  height: 31px;
+  cursor: pointer;
+}
+
+.filter {
+  border-radius: 8px;
+  justify-content: space-between;
+}
+
+
+.search .form-control-sm {
+  width: 90%;
+  border-radius: 8px;
+}
+
+.search .input-group-append {
+  background-color: transparent;
+
+}
+
+.buttons {
+  width: 80%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 1em;
+}
+
+.buttons a {
+  text-decoration: none;
+}
+
+.buttons .fa {
+  font-size: 1.2em;
+}
+
+p {
+  font-size: 13px;
+}
+
+
+
+@media screen and (max-width: 519px) {
+  #wrapper {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .filter {
+    width: auto;
+    margin: 0;
+  }
+
+  .form-filter {
+    width: 100%;
+    flex-direction: column;
+    margin-right: 0;
+
+    .section {
+      width: 100% !important;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .basic-filter {
+    flex-direction: column;
+
+    .search {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .buttons {
+      width: 100%;
+      justify-content: left;
+      margin-bottom: 10px;
+    }
+
+    .advanced-filter {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .cont {
+    padding: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+
+  .ibox {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .ibox-content {
+    padding: 20px;
+    margin: 0;
+    width: 100%;
+  }
+
+  .pr {
+    display: flex;
+    justify-content: center;
+  }
+
+}
+
+
+@media screen and (max-width: 400px) {
+  .cont {
+    padding: 0;
+    max-width: 100% !important;
+  }
+
+
+  .ibox-content {
+    padding: 5px;
+  }
+
+  .col {
+    max-width: 100%;
+  }
+
+}
+
+
+.main-container {
+  display: flex;
+  width: 100%; 
+}
+
+.left-content {
+  width: 60%;
+  padding-right: 20px; 
+}
+
+.right-content {
+  width: 40%; 
+}

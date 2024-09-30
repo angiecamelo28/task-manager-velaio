@@ -1,0 +1,210 @@
+<app-breadcrumbs [name]="'Gestión de tareas'" [namePage]="'Lista de tareas'"
+    [description]="'Administra tus tareas pendientes y completadas de manera eficiente.'">
+</app-breadcrumbs>
+
+<div style="padding-top: 0%;" class="wrapper wrapper-content animated fadeIn mx-2 mt-3" id="ibox">
+    <div class="ibox-content">
+        <div class="sk-spinner sk-spinner-double-bounce">
+            <div class="sk-double-bounce1"></div>
+            <div class="sk-double-bounce2"></div>
+        </div>
+
+        <div class="filter mx-0 mb-4 d-flex flex-column ">
+            <div class="d-flex basic-filter p-2 p">
+                <div class="buttons">
+                    <button class="btn btn-primary btn-sm rounded text-white" data-toggle='modal'
+                        data-target='#updateModal'><i class="fa-solid fa-plus"></i>&nbsp;Nueva tarea</button>
+                </div>
+                <div class="search">
+                    <div class="form-group2  has-search">
+                        <select class="form-select" (change)="filtrar($event)">
+                            <option selected value="">Todas</option>
+                            <option value=true>Completadas</option>
+                            <option value=false>Pendientes</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 my-3"
+                    *ngFor="let task of filteredTasks">
+                    <div class="icon-box" style="width: 100%">
+                        <div class="d-flex">
+                            <div class="image mr-3">
+                                <div class="icon">
+                                    <i class="fa-solid fa-list-check"></i>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center m-auto doc">
+                                <p>
+                                    {{task.title}} - {{task.date}}
+                                </p>
+                            </div>
+                        </div>
+
+                        <h4 class="title"><a>Personas asociadas</a></h4>
+                        <p class="description">
+                            <i class="fa-regular fa-user" title="Responsable"></i>&nbsp;&nbsp;{{ task.userId }} {{
+                            task.apellidos }}
+                        </p>
+                        <div class="actions options">
+                            <a class="option btn btn-sm btn-circle" data-tooltip="Vizualizar tarea" data-toggle='modal'
+                                data-target='#modalDetalle' (click)="verDetalle(task)"><i class="fa fa-eye"></i></a>
+                            <a class="option btn btn-sm btn-circle"
+                                data-tooltip="Editar tarea" (click)="llenarFormulario(task)" data-toggle='modal'
+                                data-target='#updateModal'><i class="fa-solid fa-pen"></i></a>
+                            <a *ngIf="!task.completed"
+                                class="option btn btn-sm btn-circle" data-tooltip="Finalizar tarea"
+                                (click)="aceptarReserva(task)"><i class="fa-solid fa-check"></i></a>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container d-flex justify-content-end align-items-center my-4 p-0">
+            <pagination-controls (pageChange)="p = $event" previousLabel="Anterior"
+                nextLabel="Siguiente"></pagination-controls>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+<div class="modal fade inmodal" id="updateModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content animated fadeIn" id="updateModal">
+            <div class="modal-header">
+                <h6 class="modal-title">Crear nueva tarea </h6>
+
+                <button id="btnCloseModalEdit" type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body ibox-content">
+                <div class="sk-spinner sk-spinner-double-bounce">
+                    <div class="sk-double-bounce1"></div>
+                    <div class="sk-double-bounce2"></div>
+                </div>
+                <p style="text-align: justify;">Por favor, ingresa la información solicitada para crear la tarea.</p>
+                <form [formGroup]="formEditar" role="form">
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="form-group">
+                                    <label class="col-form-label">Nombre de la tarea:<span
+                                            class="text-danger">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="form-group">
+                                    <textarea type="text" class="form-control" formControlName="fechaInicio"
+                                        required> </textarea>
+                                    <div class="text-danger">
+                                        <p *ngIf="invalidField('espacioId')">
+                                            *El espacio es requerido.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="form-group">
+                                    <label class="col-form-label">Fecha límite<span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="form-group">
+                                    <input type="date" [min]="today" class="form-control" formControlName="fechaInicio"
+                                        required>
+                                    <div class="text-danger">
+                                        <p *ngIf="invalidField('fechaInicio')">
+                                            *La fecha inicial es requerida.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p><strong>Personas asociadas</strong></p>
+                            <hr>
+
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="form-group">
+                                    <label class="col-form-label">Nombre completo<span
+                                            class="text-danger">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" formControlName="cantidad" required />
+                                    <div class="text-danger">
+                                        <p *ngIf="invalidField('cantidad')">
+                                            La cantidad de asistentes es requerida.
+                                        </p>
+                                        <p *ngIf="this.excederCapacidad()">
+                                            * La cantidad de asistentes es superior a la capacidad del espacio.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="form-group">
+                                    <label class="col-form-label">Edad<span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="form-group">
+                                    <input type="number" class="form-control" formControlName="precio" required />
+                                    <div class="text-danger">
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <p><strong>Habilidades </strong></p>
+
+                            <div class="col-lg-3 col-md-6">
+                                <div class="form-group">
+                                    <label class="col-form-label">Habilidades<span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control uppercase" formControlName="nombres"
+                                        required />
+                                </div>
+                                <div class="text-danger">
+                                    <p *ngIf="invalidField('nombres')">
+                                        *Los nombres son requeridos.
+                                    </p>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
