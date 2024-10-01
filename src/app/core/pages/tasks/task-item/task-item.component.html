@@ -1,0 +1,48 @@
+<div class="icon-box" style="width: 100%">
+    <div class="d-flex">
+        <div class="image mr-2">
+            <div class="icon">
+                <i class="fa-solid fa-list-check"></i>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center m-auto doc" style="gap: 5px;">
+            <div class="task-info">
+                <p>{{task.title}} </p>
+                <p>{{task.date}}</p>
+                <p class="status" [ngClass]="task.completed ? 'completed' : 'pending'">
+                    {{ task.completed ? 'Completada' : 'Pendiente' }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="title"><a>Personas asociadas</a></h4>
+    <ng-container *ngIf="users.length <= 0">
+        <p class="description">
+            <i class="fa-regular fa-user"></i>&nbsp;&nbsp;
+            Sin personas asociadas.
+        </p>
+    </ng-container>
+    <ng-container *ngFor="let user of users">
+        <p class="description">
+            <i class="fa-regular fa-user"></i>&nbsp;&nbsp;
+            {{user.name}}, {{user.age}} años
+        </p>
+        <p class="description bullet-point">
+            Habilidades: {{user.skills.join(', ')}}
+        </p>
+    </ng-container>
+
+    <div class="actions options">
+        <a *ngIf="!task.completed" class="option btn btn-sm btn-circle" data-tooltip="Finalizar tarea"
+            (click)="markAsCompleted()">
+            <i class="fa-solid fa-check"></i>
+        </a>
+        <a class="option btn btn-sm btn-circle" data-tooltip="Visualizar tarea" (click)="seeDetails()">
+            <i class="fa fa-eye"></i>
+        </a>
+        <a class="option btn btn-sm btn-circle" data-tooltip="Editar tarea" (click)="edit()">
+            <i class="fa-solid fa-pen"></i>
+        </a>
+    </div>
+</div>

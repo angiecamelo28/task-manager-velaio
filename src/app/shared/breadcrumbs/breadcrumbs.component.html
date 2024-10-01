@@ -1,0 +1,27 @@
+
+
+<section class="intro-single m-3 p-3"  style="background-color: white; border-radius: 6px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-9">
+        <div class="title-single-box" [ngStyle]="{'border-left': '3px solid #f0a43e' }">
+          <h1 class="title-single">{{namePage }}</h1>
+          <span class="color-text-a">{{description }}</span>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item ">
+              <a *ngIf="!subComponent" routerLink="/home-page" style="text-decoration: none;"> <strong>Inicio</strong></a>
+              <a *ngIf="subComponent" (click)="goTo()" style="text-decoration: none;"> <strong>{{nameComponent}}</strong></a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {{name }}
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>

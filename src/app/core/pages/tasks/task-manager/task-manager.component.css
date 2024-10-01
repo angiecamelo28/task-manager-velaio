@@ -1,0 +1,180 @@
+.form-group2 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+
+.search {
+  border-radius: 8px;
+  width: 20%;
+  padding: 0;
+  color: #ffff;
+  background-color: #ffff;
+  border: none;
+  flex-grow: 1;
+  margin-right: 1em;
+}
+
+.filter {
+  border-radius: 8px;
+  justify-content: space-between;
+}
+
+
+.search .form-control-sm {
+  width: 90%;
+  border-radius: 8px;
+}
+
+
+.buttons {
+  width: 80%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 1em;
+}
+
+.buttons a {
+  text-decoration: none;
+}
+
+.buttons .fa {
+  font-size: 1.2em;
+}
+
+p {
+  font-size: 13px;
+}
+
+
+
+@media screen and (max-width: 519px) {
+
+  .filter {
+    width: auto;
+    margin: 0;
+  }
+
+  .form-filter {
+    width: 100%;
+    flex-direction: column;
+    margin-right: 0;
+
+    .section {
+      width: 100% !important;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .basic-filter {
+    flex-direction: column;
+
+    .search {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .buttons {
+      width: 100%;
+      justify-content: left;
+      margin-bottom: 10px;
+    }
+
+  }
+
+
+
+}
+
+
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #201f3b;
+}
+
+
+
+
+.search .form-control-sm {
+  width: 90%;
+  border-radius: 8px;
+}
+
+
+.buttons {
+  width: 80%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 1em;
+}
+
+.buttons a {
+  text-decoration: none;
+}
+
+.buttons .fa {
+  font-size: 1.2em;
+}
+
+p {
+  font-size: 13px;
+}
+
+
+
+@media screen and (max-width: 519px) {
+  #wrapper {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .filter {
+    width: auto;
+    margin: 0;
+  }
+
+  .form-filter {
+    width: 100%;
+    flex-direction: column;
+    margin-right: 0;
+
+    .section {
+      width: 100% !important;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+
+  .cont {
+    padding: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+
+
+}
+
+
+
+::ng-deep.swal2-container {
+  z-index: 99999999999 !important;
+}

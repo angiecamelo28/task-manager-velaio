@@ -1,0 +1,18 @@
+::ng-deep.swal2-container {
+    z-index: 99999999999 !important;
+}
+
+.table {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.table th,
+.table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.btn {
+    margin-left: 5px;
+}
