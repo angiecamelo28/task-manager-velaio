@@ -8,7 +8,7 @@ import { UsersComponent } from './core/pages/users/users.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/inicio',
+    redirectTo: '/task-manager',
     pathMatch: 'full'
   },
   {

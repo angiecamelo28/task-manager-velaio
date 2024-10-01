@@ -31,7 +31,7 @@
             <div class="row">
                 <div *ngFor="let task of filteredTasks | paginate: { itemsPerPage: itemsPerPage, currentPage: p }"
                     class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0 my-3">
-                    <app-task-item [task]="task" [users]="getUsersForTask(task.users)"
+                    <app-task-item style="width: 100%;" [task]="task" [users]="getUsersForTask(task.users)"
                         (completeTask)="markAsCompleted(task)" (viewTask)="seeDetails(task)"
                         (editTask)="fillOutForm(task)">
                     </app-task-item>
@@ -69,7 +69,8 @@
                 </div>
                 <p style="text-align: justify;">Por favor, ingresa la información solicitada para {{ isEditing ?
                     'actualizar' : 'crear' }} la tarea.</p>
-                <app-task-form [taskForm]="taskForm" [isEditing]="isEditing" (saveTask)="saveTask()"></app-task-form>
+                <app-task-form [users]="users" [taskForm]="taskForm" [isEditing]="isEditing"
+                    (saveTask)="saveTask()"></app-task-form>
 
             </div>
             <div class="modal-footer">

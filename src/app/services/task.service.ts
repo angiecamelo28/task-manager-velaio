@@ -17,7 +17,7 @@ export class TaskService {
    * Método para obtener todas las tareas
    */
   getTasks(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}`);
+    return this.http.get<any[]>(`${this.apiUrl}/tasks`);
   }
 
   /**
@@ -25,7 +25,7 @@ export class TaskService {
    * @param task Información de la tarea a crear
    */
   createTask(task: Task): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}`, task);
+    return this.http.post<any>(`${this.apiUrl}/tasks`, task);
   }
 
   /**
@@ -34,6 +34,6 @@ export class TaskService {
    * @param task 
    */
   updateTask(id: number, task: Task): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${id}`, task);
+    return this.http.put<any>(`${this.apiUrl}/tasks/${id}`, task);
   }
 }

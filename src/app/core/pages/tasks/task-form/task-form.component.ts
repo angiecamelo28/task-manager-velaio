@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class TaskFormComponent {
   @Input() taskForm!: FormGroup;
   @Input() isEditing = false;
+  @Input() users: Array<any> = [];
   @Output() saveTaskEvent = new EventEmitter<void>();
 
   constructor(private fb: FormBuilder) { }
@@ -118,5 +119,24 @@ export class TaskFormComponent {
    */
   saveTask() {
     this.saveTaskEvent.emit();
+  }
+
+  // Buscar el usuario por nombre
+  searchUser(index: number) {
+    const nameControl = this.people().at(index).get('name')?.value;
+    const foundUser = this.users.find(user => user.name.toLowerCase() === nameControl.toLowerCase());
+
+    if (foundUser) {
+      this.people().at(index).patchValue({
+        userId: foundUser.userId,
+        name: foundUser.name,
+        age: foundUser.age
+      });
+      const skillsFormArray = this.getSkills(index);
+      skillsFormArray.clear();
+      foundUser.skills.forEach((skill: string) => {
+        skillsFormArray.push(this.fb.control(skill, Validators.required));
+      });
+    }
   }
 }

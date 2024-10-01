@@ -36,6 +36,7 @@ export class TaskManagerComponent implements OnInit, AfterViewInit {
       id: [0],
       title: ['', [Validators.required, Validators.minLength(5)]],
       date: ['', Validators.required],
+      completed: [false],
       users: this.fb.array([])
     });
   }
@@ -99,27 +100,48 @@ export class TaskManagerComponent implements OnInit, AfterViewInit {
       return;
     }
     if (this.taskForm.valid) {
+      this.spinner();
       if (this.isEditing) {
         const taskId = this.taskForm.value.id;
-        this.alert.success('Tarea actualizada correctamente');
-        /* this.tasksSrv.updateTask(taskId, this.taskForm.value).subscribe(() => {
-          this.alert.success('Tarea actualizada correctamente');
-        }); */
+        this.tasksSrv.updateTask(taskId, this.taskForm.value).subscribe({
+          next: (resp: any) => {
+            this.alert.success(resp.response);
+            this.refreshData();
+          },
+          error: (err: any) => {
+            this.alert.error(err.error?.errors);
+          }
+        });
+
       } else {
-        this.alert.success('Tarea creada correctamente');
-        /* this.tasksSrv.createTask(this.taskForm.value).subscribe(() => {
-          this.alert.success('Tarea creada correctamente');
-        }); */
+        this.tasksSrv.createTask(this.taskForm.value).subscribe({
+          next: (resp: any) => {
+            this.alert.success(resp.response);
+            this.refreshData();
+          },
+          error: (err: any) => {
+            this.alert.error(err.error?.errors);
+          }
+        });
       }
-      this.ngOnInit();
+      this.refreshData();
       usersArray.clear();
-      $(this.taskModal.nativeElement).modal('hide');
-      this.taskForm.reset();
     } else {
       this.taskForm.markAllAsTouched();
     }
   }
 
+
+  refreshData() {
+    this.spinner();
+    this.users = [];
+    this.filteredTasks = [];
+    this.tasks = [];
+    $(this.taskModal.nativeElement).modal('hide');
+    this.taskForm.reset();
+    this.getUsers();
+    this.getTasks();
+  }
   /**
    * Llena el formulario de la tarea con la información de la tarea seleccionada
    * @param task Información de la tarea
@@ -130,6 +152,7 @@ export class TaskManagerComponent implements OnInit, AfterViewInit {
       id: task.id,
       title: task.title,
       date: task.date,
+      completed: task.completed,
       users: task.users
     });
     const usersFormArray = this.taskForm.get('users') as FormArray;
@@ -176,39 +199,7 @@ export class TaskManagerComponent implements OnInit, AfterViewInit {
     this.spinner();
     this.usersSrv.getUsers().subscribe({
       next: (resp: any) => {
-        //this.users = resp;
-        this.users = [
-          {
-            userId: 1,
-            name: 'Carlos Pérez',
-            age: 25,
-            skills: ['JavaScript', 'Angular', 'TypeScript']
-          },
-          {
-            userId: 2,
-            name: 'María Gómez',
-            age: 30,
-            skills: ['Python', 'Django', 'Machine Learning']
-          },
-          {
-            userId: 3,
-            name: 'Juan Rodríguez',
-            age: 28,
-            skills: ['HTML', 'CSS', 'JavaScript']
-          },
-          {
-            userId: 4,
-            name: 'Ana Morales',
-            age: 22,
-            skills: ['Java', 'Spring', 'MySQL']
-          },
-          {
-            userId: 5,
-            name: 'Luis Fernández',
-            age: 35,
-            skills: ['PHP', 'Laravel', 'Vue.js']
-          }
-        ];
+        this.users = resp;
       },
       error: (err: any) => {
         this.alert.error(err.error?.errors);
@@ -226,38 +217,7 @@ export class TaskManagerComponent implements OnInit, AfterViewInit {
     this.spinner();
     this.tasksSrv.getTasks().subscribe({
       next: (resp: any) => {
-        //this.tasks = resp;
-        this.tasks = [
-          {
-            id: 1,
-            title: "Tarea A",
-            date: "2024-01-01",
-            completed: false,
-            users: [1, 2]
-          },
-          {
-            id: 2,
-            title: "Tarea B",
-            date: "2024-01-01",
-            completed: true,
-            users: [3, 4]
-          },
-          {
-            id: 3,
-            title: "Tarea C",
-            date: "2024-01-01",
-            completed: false,
-            users: [4, 1]
-          },
-          {
-            id: 4,
-            title: "Tarea D",
-            date: "2024-01-01",
-            completed: true,
-            users: [5, 4]
-          }
-        ];
-
+        this.tasks = resp;
         this.filteredTasks = this.tasks;
       },
       error: (err: any) => {

@@ -25,9 +25,9 @@
                                 <div class="ibox-title">
                                     <strong>Persona asociada {{ i + 1 }}</strong>
                                     <div class="ibox-tools">
-                                        <a class="collapse-link">
+                                        <!-- <a class="collapse-link">
                                             <i class="fa fa-chevron-up"></i>
-                                        </a>
+                                        </a> -->
                                         <a title="Eliminar persona" class="close-link" (click)="removePerson(i)">
                                             <i class="fa fa-times"></i>
                                         </a>
@@ -37,7 +37,11 @@
                                     <div [formGroupName]="i">
                                         <div class="form-group mt-3">
                                             <label>Nombre completo:<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" formControlName="name">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" formControlName="name">
+                                                <button class="btn btn-primary" type="button" (click)="searchUser(i)"><i
+                                                        class="fa-solid fa-magnifying-glass"></i></button>
+                                            </div>
                                             <div class="text-danger" *ngIf="isFieldInvalid('name', i)">
                                                 *El nombre es obligatorio, debe tener al menos 5 caracteres y no debe
                                                 repetirse.

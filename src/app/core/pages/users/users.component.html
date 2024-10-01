@@ -26,8 +26,7 @@
                             <div class="advanced-filter d-flex justify-content-center aling-items-center px-1">
                                 <button type="button"
                                     class="btn btn-primary btn-sm d-flex align-items-center justify-content-center px-1 "
-                                    data-toggle='modal' data-target='#modalCrear'> <i class='fa fa-plus'
-                                        aria-hidden='true'></i>
+                                    (click)="openModal()"> <i class='fa fa-plus' aria-hidden='true'></i>
                                     &nbsp; Crear
                                     usuario</button>
                             </div>
@@ -39,7 +38,7 @@
             </div>
         </form>
 
-        <div class="table-responsive">
+        <div class="table-responsive ">
             <table class="footable table table-striped  " data-page-size="10" data-filter=#filter>
                 <thead>
                     <tr>
@@ -60,11 +59,10 @@
                                 <li *ngFor="let skill of user.skills">{{skill}}</li>
                             </ul>
                         </td>
-                        <td><button class='btn btn-primary   btnTablaAcc' data-toggle='modal'
-                                data-target='#modalEdit'><i class='fa fa-pencil' aria-hidden='true'
-                                    title="Editar usuario"></i></button>&nbsp;
-                            <button class='btn btn-info btn-danger btnTablaAcc' title="Eliminar usuario"><i
-                                    class="fa-solid fa-trash"></i></button>
+                        <td><button (click)="fillOutForm(user)" class='btn btn-primary   btnTablaAcc'><i
+                                    class='fa fa-pencil' aria-hidden='true' title="Editar usuario"></i></button>&nbsp;
+                            <button (click)="delete(user.userId)" class='btn btn-info btn-danger btnTablaAcc'
+                                title="Eliminar usuario"><i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>
                 </tbody>
@@ -79,5 +77,88 @@
         </div>
 
 
+    </div>
+</div>
+
+<div class="modal fade inmodal" id="userModal" tabindex="-1" role="dialog" aria-hidden="true" #userModal>
+    <div class="modal-dialog">
+        <div class="modal-content animated fadeIn" id="modal">
+            <div class="modal-header">
+                <h6 class="modal-title">{{ isEditing ? 'Actualizar usuario' : 'Crear nueva usuario' }}</h6>
+                <button (click)="closeModal()" type="button" class="close" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body ibox-content" id="modal">
+                <div class="sk-spinner sk-spinner-double-bounce">
+                    <div class="sk-double-bounce1"></div>
+                    <div class="sk-double-bounce2"></div>
+                </div>
+                <p style="text-align: justify;">Por favor, ingresa la información solicitada para {{ isEditing ?
+                    'actualizar' : 'crear' }} el usuario.</p>
+
+                <form [formGroup]="userForm">
+                    <div class="row mb-3">
+                        <label class="col-md-4 col-lg-3 col-form-label">Nombre completo<span
+                                class="text-danger">*</span></label>
+                        <div class="col-md-8 col-lg-9">
+                            <input type="text" class="form-control" formControlName="name">
+                            <div class="text-danger" *ngIf="invalidField('name')">
+                                *El nombre es obligatorio y debe tener al menos 5 caracteres.
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row mb-3">
+                        <label class="col-md-4 col-lg-3 col-form-label">Edad<span class="text-danger">*</span></label>
+                        <div class="col-md-8 col-lg-9">
+                            <input type="number" class="form-control" formControlName="age">
+                            <div class="text-danger" *ngIf="invalidField('age')">
+                                *La edad debe ser mayor a 18 años.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div formArrayName="skills">
+                        <table class="table table-bordered mt-3">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Habilidad</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let skill of skills.controls; let i = index">
+                                    <td>{{ i + 1 }}</td>
+                                    <td>
+                                        <input type="text" class="form-control" [formControlName]="i">
+                                        <div class="text-danger" *ngIf="skills.at(i).invalid && skills.at(i).touched">
+                                            *La habilidad es obligatoria.
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger" (click)="removeSkill(i)">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-primary" (click)="addSkill()">Agregar
+                            Habilidad</button>
+                    </div>
+                </form>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+                <button type="submit" class="btn btn-primary" (click)="saveUser()">{{ isEditing ? 'Actualizar usuario' :
+                    'Guardar usuario' }}</button>
+            </div>
+        </div>
     </div>
 </div>
